@@ -23,6 +23,7 @@ CI additionally passes `-p:AssemblyVersion` (pinned to the major) and `-p:FileVe
 
 This is the **schema creation package** of the Neo4j storage of the `PureQL.CSharp.Model.Graph` family. It depends on `PureQL.CSharp.Model.Graph` `0.1.0-preview.1.0.0`, `PureQL.CSharp.Model.Graph.Neo4j.Abstractions` `0.1.0-preview.1.0.0` and `Neo4j.Driver` `6.5.1`, and on no other operation package. Namespace `PureQL.CSharp.Model.Graph.Neo4j.Creation`, one public type per file:
 
+- `SchemaCreationStatements` — `sealed record : IEnumerable<Query>` yielding the four `CREATE CONSTRAINT … IF NOT EXISTS` / `CREATE INDEX … IF NOT EXISTS` statements in a fixed order, built from `GraphLabels` / `GraphProperties` of the Graph package and `SchemaNames`. `Query` is written `global::Neo4j.Driver.Query`, because inside the namespace `PureQL.CSharp.Model.Graph.Neo4j.Creation` both `Query` (the model's `PureQL.CSharp.Model.Query`) and `Neo4j` (the namespace `PureQL.CSharp.Model.Graph.Neo4j`) resolve to the enclosing namespaces first.
 - `SchemaNames` — the names of the constraint and the indexes as constants. The Existence and Destruction packages duplicate them rather than depend on this package: renaming one is a breaking change across the three packages.
 
 Every public member has XML documentation (`GenerateDocumentationFile`; a missing comment fails the build under `-warnaserror`).

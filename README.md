@@ -20,6 +20,7 @@ Namespace `PureQL.CSharp.Model.Graph.Neo4j.Creation`:
 
 | Name | Description |
 |------|-------------|
+| `SchemaCreationStatements` | The four idempotent `CREATE CONSTRAINT` / `CREATE INDEX` statements, as `Neo4j.Driver.Query`s in the order they run |
 | `SchemaNames` | The names of the constraint and the indexes, as constants |
 
 ## Dependencies
